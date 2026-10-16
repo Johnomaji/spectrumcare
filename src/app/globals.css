@@ -1,26 +1,70 @@
 @import "tailwindcss";
 
+/*
+  Spectrum Care Foundation — design tokens.
+  Palette is taken from the logo (see the Website Content & Design Blueprint).
+  Yellow is for highlights and illustrations only, never for text.
+*/
+@theme {
+  --color-brand-blue: #0162b5;
+  --color-brand-red: #e01220;
+  --color-brand-yellow: #ffbe11;
+  --color-brand-green: #24a74b;
+  --color-brand-teal: #009680;
+  --color-brand-orange: #fb530f;
+  --color-brand-charcoal: #424446;
+
+  /* Supporting neutrals */
+  --color-brand-ink: #22242a;
+  --color-brand-mist: #f4f7fb;
+  --color-brand-line: #e3e8ef;
+
+  --font-sans: var(--font-poppins), Arial, Helvetica, sans-serif;
+
+  --radius-card: 1rem;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  /* Offset anchor targets so the sticky header never covers a heading. */
+  scroll-padding-top: 7rem;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  color: var(--color-brand-charcoal);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--color-brand-ink);
+  text-wrap: balance;
+}
+
+/* Visible, high-contrast focus ring for keyboard users on every interactive element. */
+:focus-visible {
+  outline: 3px solid var(--color-brand-blue);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
